@@ -1,21 +1,36 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 public class Login {
-    //прави се проверка за какъв иска да е: админ, служител
-
+    //прави се проверка за какъв иска да е: админ или служител
+    //в main
     //служител
-    protected List<String> workerNicknameList = new ArrayList<>();
-    protected List<String> workerPasswordList = new ArrayList<>();
 
-    protected void nickname(){
+    public void adminLogin(Scanner password) throws Exception {
+        Admin admin = new Admin();
 
+        if (password.equals("Admin")){
+            System.out.println("Access granted!");
+            admin.menu();
+        }else{
+            throw new Exception("Access denied! Invalid password.");
+        }
     }
 
-    protected void password(){
+    protected void workerLogin(Scanner nickname, Scanner password) throws Exception {
+        AddingNewWorker worker = new AddingNewWorker();
 
+        if (worker.workerNicknameList.contains(nickname)){
+            if (worker.workerPasswordList.contains(password)){
+                System.out.println("Access granted.");
+                System.out.println("The work ID number of: " + nickname + " is: " + worker.workerNicknameList.indexOf(nickname));
+                worker.menu();
+            }else{
+                throw new Exception("Access denied! Invalid password.");
+            }
+        }else{
+            throw new Exception("Access denied! Invalid nickname");
+        }
     }
 }
-
