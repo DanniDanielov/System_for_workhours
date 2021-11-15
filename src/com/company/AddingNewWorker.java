@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class AddingNewWorker extends Admin{
@@ -18,13 +19,32 @@ public class AddingNewWorker extends Admin{
         System.out.println("The current number of workers is: " + workerNicknameList.size());
         if (workerNicknameList.size() >= 10){
             System.out.println("Sorry but we reached our capacity of workers. Would you like to replace someone.");
-            //направи логика за замяна на елемент от листовете
+            //направи логика за замяна на елемент от листовете - да
+            System.out.println("Do you want to replace someone of the workers?");
+            String ans = inpot.nextLine();
+            String ansLowerCase = ans.toLowerCase(Locale.ROOT);
+
+            if (ansLowerCase.equals("yes")){
+                System.out.print("Please insert the work ID here: ");
+                int workerId = inpot.nextByte();
+                System.out.print("Please enter the name of the new worker here: ");
+                String workerName = inpot.nextLine();
+                System.out.print("And please enter password for the new worker here: ");
+                String workerPass = inpot.nextLine();
+                workerNicknameList.set(workerId,workerName);
+                workerPasswordList.set(workerId, workerPass);
+
+                System.out.println("The change has been successfully made. The new worker: " + workerName + " has work ID: " + workerId + ".");
+            }else{
+                //измисли на къде трябва да продължава оттук. Дали да свършва или да дава възможност между изход и началото
+            }
         }else{
-            System.out.print("Please write the name ID of the new worker here: ");
+            System.out.print("Please enter the name ID of the new worker here: ");
             String nickname = inpot.nextLine();
 
             if (workerNicknameList.contains(nickname)){
                 throw new Exception("This user name is already taken! Please insert new nickname.");
+                //провери дали връща на същото място ил трябва да допълня!!!
             }else {
                 workerNicknameList.add(nickname);
                 System.out.println("And choose an unique password for this user here: ");

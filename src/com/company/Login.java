@@ -3,14 +3,14 @@ package com.company;
 import java.util.Scanner;
 
 public class Login {
-    //прави се проверка за какъв иска да е: админ или служител
+    //прави се проверка за какъв иска да е: админ или служител - да
     //в main
     //служител
 
     public void adminLogin(Scanner password) throws Exception {
         Admin admin = new Admin();
 
-        if (password.equals("Admin")){
+        if (password.equals("аdmin")){
             System.out.println("Access granted!");
             admin.menu();
         }else{
