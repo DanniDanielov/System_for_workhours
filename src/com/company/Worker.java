@@ -1,6 +1,13 @@
 package com.company;
 
 public class Worker extends Login{
+    protected String name;
+    protected String password;
+
+    public Worker(String name, String password){
+        this.name = name;
+        this.password = password;
+    }
 
     public void menu(){
 

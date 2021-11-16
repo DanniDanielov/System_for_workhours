@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class Admin extends Login{
     // да може да добавя нови клиенти и служители, които имена и пароли да се съдържат в съответните листове - да
 
-    public void menu() throws Exception {
-        Scanner inpot = new Scanner(System.in);
+    public void menu(Scanner inpot) throws Exception {
         AddingNewWorker worked = new AddingNewWorker();
         AddingNewClient client = new AddingNewClient();
+        WorkerStatistics stats = new WorkerStatistics();
 
         System.out.println("Hello and welcome to admin.");
         System.out.println("What would you like to do: ");
@@ -19,16 +19,11 @@ public class Admin extends Login{
         byte adminMenuChoosing = inpot.nextByte();
 
         switch (adminMenuChoosing) {
-            case 1 -> worked.addNewWorker();
-            case 2 -> client.addNewClient();
-            case 3 -> workerStatistic();
+            case 1 -> worked.addNewWorker(inpot);
+            case 2 -> client.addNewClient(inpot);
+            case 3 -> stats.menu(inpot);
             default -> throw new Exception("Invalid input!");
         }
     }
-
-    public void workerStatistic(){
-        // търси го по име и изкарва колко време е работил и по кои проекти
-    }
-
     //да се направи метод, в който да търси по дадена седмица и да вижда статистики на служителите
 }
