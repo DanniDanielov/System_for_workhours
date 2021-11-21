@@ -1,5 +1,10 @@
 package com.company;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+
+import java.io.FileWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -50,6 +55,11 @@ public class AddingNewClient extends Admin{
                     Client client = new Client(name, projectName, finalDate);
                     clientList.add(client);
                     System.out.println("This client " + name + " has client ID: " + clientList.indexOf(client));
+                    Gson gson = new GsonBuilder().create();
+                    JsonArray jsonArray = gson.toJsonTree(clientList).getAsJsonArray();
+                    FileWriter file = new FileWriter("GsonFile.json");
+                    file.write(String.valueOf(jsonArray));
+                    file.flush();
                     admin.menu(inpot);
                 }catch (Exception e){
                     new Exception("The date format is not correct!");

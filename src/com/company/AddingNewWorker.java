@@ -1,9 +1,16 @@
 package com.company;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+
+
 
 public class AddingNewWorker extends Admin{
     List<Worker> workerList = new ArrayList<>(10);
@@ -43,7 +50,13 @@ public class AddingNewWorker extends Admin{
                 workerList.add(worker);
                 System.out.println("Worker " + nickname + " has been successfully added!");
                 System.out.println("The work ID of " + nickname + " is: " + workerList.indexOf(worker));
+                Gson gson = new GsonBuilder().create();
+                JsonArray jsonArray = gson.toJsonTree(workerList).getAsJsonArray();
+                FileWriter file = new FileWriter("GsonFile.json");
+                file.write(String.valueOf(jsonArray));
+                file.flush();
                 admin.menu(inpot);
+
             }
         }
     }

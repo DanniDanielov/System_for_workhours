@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.Scanner;
 
+
 public class Login {
     //прави се проверка за какъв иска да е: админ или служител - да
     //в main

@@ -2,7 +2,8 @@ package com.company;
 
 import java.util.Scanner;
 
-public class Admin extends Login{
+public class
+Admin extends Login{
     // да може да добавя нови клиенти и служители, които имена и пароли да се съдържат в съответните листове - да
 
     public void menu(Scanner inpot) throws Exception {
