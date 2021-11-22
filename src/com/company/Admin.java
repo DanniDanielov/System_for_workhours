@@ -20,7 +20,7 @@ Admin extends Login{
         byte adminMenuChoosing = inpot.nextByte();
 
         switch (adminMenuChoosing) {
-            case 1 -> worked.addNewWorker(inpot);
+            case 1 -> worked.isEnoughSpace(inpot);
             case 2 -> client.addNewClient(inpot);
             case 3 -> stats.menu(inpot);
             default -> throw new Exception("Invalid input!");

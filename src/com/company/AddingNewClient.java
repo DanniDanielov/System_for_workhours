@@ -12,34 +12,38 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class AddingNewClient extends Admin{
+public class AddingNewClient{
     List<Client> clientList = new ArrayList<>(10);
     Admin admin = new Admin();
     ReplacingExistingClient replacingExistingClient = new ReplacingExistingClient();
 
-    protected void addNewClient(Scanner inpot) throws Exception {
-        //проверка дали има достатъчно място - да
-        //да провери дали вече съществува - да
-        //създава нов клиент и го записва в лист - да
-
+    protected void isEnoughSpace(Scanner inpot) throws Exception {
         System.out.println("The current number of clients is: " + clientList.size());
         if (clientList.size() >= 10){
-            System.out.println("Sorry but we have reached the capacity of clients. Would you like to replace someone: ");
-            System.out.println("Would you like to replace existing client?");
-            String ans = inpot.nextLine();
-            String ansLowerCase = ans.toLowerCase(Locale.ROOT);
+            throwingToReplacing(inpot);
+        }else {
 
-            if (ansLowerCase.equals("yes")){
-                replacingExistingClient.replace(inpot);
-            }else if(ansLowerCase.equals("no")){
-                //измисли на къде трябва да продължава оттук. Дали да свършва или да дава възможност между изход и началото
-            }else {
-                throw new Exception("Invalid input!");
-            }
-        }else{
+        }
+    }
+
+    protected void throwingToReplacing(Scanner inpot) throws Exception {
+        System.out.println("Sorry but we have reached the capacity of clients. Would you like to replace someone: ");
+        System.out.println("Would you like to replace existing client?");
+        String ans = inpot.nextLine();
+        String ansLowerCase = ans.toLowerCase(Locale.ROOT);
+
+        if (ansLowerCase.equals("yes")){
+            replacingExistingClient.replace(inpot);
+        }else if(ansLowerCase.equals("no")){
+            //измисли на къде трябва да продължава оттук. Дали да свършва или да дава възможност между изход и началото
+        }else {
+            throw new Exception("Invalid input!");
+        }
+    }
+
+    protected void addNewClient(Scanner inpot) throws Exception {
             System.out.print("Please enter the name ID of the client here: ");
             String name = inpot.nextLine();
-
             if (clientList.contains(name)){
                 throw new Exception("This client name is already taken! Please enter new name for this client!");
                 //провери дали връща на същото място ил трябва да допълня!!!
@@ -68,4 +72,3 @@ public class AddingNewClient extends Admin{
             }
         }
     }
-}

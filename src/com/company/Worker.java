@@ -1,17 +1,14 @@
 package com.company;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
-public class Worker extends Login{
+public class Worker extends AddingNewWorker{
     protected String name;
     protected String password;
+    protected AddingNewClient client;
 
-
-    public Worker(String name, String password){
+    public Worker(String name, String password, AddingNewClient client){
         this.name = name;
         this.password = password;
+        this.client = client;
     }
 
 

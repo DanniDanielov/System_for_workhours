@@ -20,8 +20,8 @@ public class ReplacingExistingClient extends AddingNewClient{
             LocalDate finalDate = LocalDate.parse(dateOfExpire, dtf);
             Client client = new Client(name, projectName, finalDate);
             System.out.println("Please enter the client ID of the one that you want to replace: ");
-            byte oldClientId = inpot.nextByte();
-            clientList.set(oldClientId, client);
+            byte oldId = inpot.nextByte();
+            clientList.set(oldId, client);
             System.out.println("This client " + name + " has client ID: " + clientList.indexOf(client));
             admin.menu(inpot);
         }catch (Exception e){
