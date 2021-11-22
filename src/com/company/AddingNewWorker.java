@@ -51,8 +51,8 @@ public class AddingNewWorker{
                 String password = inpot.nextLine();
                 System.out.print("And please insert the name of the client that this worker will assign here: ");
                 String assClient = inpot.nextLine();
-                if (assClient.equals(client.clientList)) {
-                    Worker worker = new Worker(nickname, password, client);
+                if (client.clientList.contains(assClient)) {
+                    Worker worker = new Worker(nickname, password,client);
                     workerList.add(worker);
                     System.out.println("Worker " + nickname + " has been successfully added!");
                     System.out.println("The work ID of " + nickname + " is: " + workerList.indexOf(worker));
