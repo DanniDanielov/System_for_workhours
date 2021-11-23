@@ -21,7 +21,7 @@ public class Login {
 
     public void workerLogin(String nickname, String password, AddingNewClient client) throws Exception {
         AddingNewWorker workerList = new AddingNewWorker();
-        Worker worker = new Worker(nickname, password, client);
+        Worker worker = new Worker(nickname, password);
 
         if (workerList.workerList.contains(nickname)){
             if (workerList.workerList.contains(password)){

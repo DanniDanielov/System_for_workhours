@@ -13,13 +13,7 @@ public class ReplacingExistingWorker extends AddingNewWorker{
         String password = inpot.nextLine();
         System.out.print("Enter the work ID of the worker you want to replace: ");
         byte id = inpot.nextByte();
-        System.out.print("And enter the name of the assigned client here: ");
-        String assClient = inpot.nextLine();
-        if (assClient.equals(client.clientList)){
-            Worker newWorker = new Worker(name, password, client);
+            Worker newWorker = new Worker(name, password);
             worker.workerList.set(id, newWorker);
-        }else{
-            throw new Exception("Invalid client's name!");
-        }
     }
 }

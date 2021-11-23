@@ -49,10 +49,7 @@ public class AddingNewWorker{
             }else {
                 System.out.print("Choose an unique password for this user here: ");
                 String password = inpot.nextLine();
-                System.out.print("And please insert the name of the client that this worker will assign here: ");
-                String assClient = inpot.nextLine();
-                if (client.clientList.contains(assClient)) {
-                    Worker worker = new Worker(nickname, password,client);
+                    Worker worker = new Worker(nickname, password);
                     workerList.add(worker);
                     System.out.println("Worker " + nickname + " has been successfully added!");
                     System.out.println("The work ID of " + nickname + " is: " + workerList.indexOf(worker));
@@ -62,9 +59,6 @@ public class AddingNewWorker{
                     file.write(String.valueOf(jsonArray));
                     file.flush();
                     admin.menu(inpot);
-                }else{
-                    throw new Exception("Invalid client's name!");
-                }
             }
         }
     }
