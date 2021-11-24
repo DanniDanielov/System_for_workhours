@@ -21,7 +21,7 @@ Admin extends Login{
 
         switch (adminMenuChoosing) {
             case 1 -> worked.isEnoughSpace(inpot);
-            case 2 -> client.addNewClient(inpot);
+            case 2 -> client.isEnoughSpace(inpot);
             case 3 -> stats.menu(inpot);
             default -> throw new Exception("Invalid input!");
         }

@@ -2,11 +2,11 @@ package com.company;
 
 import java.util.Scanner;
 
-public class ReplacingExistingWorker extends AddingNewWorker{
+public class ReplacingExistingWorker extends AddingNewWorker implements ReplacingInterface{
     AddingNewWorker worker = new AddingNewWorker();
-    private AddingNewClient client;
 
-    protected void replace(Scanner inpot) throws Exception {
+    @Override
+    public void replace(Scanner inpot){
         System.out.print("Enter the name of the new worker: ");
         String name = inpot.nextLine();
         System.out.print("Enter a password for the new worker: ");

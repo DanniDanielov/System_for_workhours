@@ -9,22 +9,23 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 
-public class AddingNewWorker{
+public class AddingNewWorker implements AddingInterface{
     List<Worker> workerList = new ArrayList<>(10);
     Admin admin = new Admin();
     ReplacingExistingWorker replacingExistingWorker = new ReplacingExistingWorker();
-    private AddingNewClient client;
 
-    protected void isEnoughSpace(Scanner inpot) throws Exception {
+    @Override
+    public void isEnoughSpace(Scanner inpot) throws Exception {
         System.out.println("The current number of workers is: " + workerList.size());
         if (workerList.size() >= 10){
             throwingToReplacing(inpot);
         }else{
-            addNewWorker(inpot);
+            addNew(inpot);
         }
     }
 
-    protected void throwingToReplacing(Scanner inpot) throws Exception {
+    @Override
+    public void throwingToReplacing(Scanner inpot) throws Exception {
         System.out.println("Sorry but we reached our capacity of workers. Would you like to replace someone.");
         //направи логика за замяна на елемент от листовете - да
         System.out.println("Do you want to replace someone of the workers?");
@@ -40,7 +41,8 @@ public class AddingNewWorker{
         }
     }
 
-    protected void addNewWorker(Scanner inpot) throws Exception {
+    @Override
+    public void addNew(Scanner inpot) throws Exception {
             System.out.print("Please enter the name ID of the new worker here: ");
             String nickname = inpot.nextLine();
             if (workerList.contains(nickname)){

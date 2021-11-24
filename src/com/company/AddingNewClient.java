@@ -12,21 +12,23 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class AddingNewClient{
+public class AddingNewClient implements AddingInterface{
     List<Client> clientList = new ArrayList<>(10);
     Admin admin = new Admin();
     ReplacingExistingClient replacingExistingClient = new ReplacingExistingClient();
 
-    protected void isEnoughSpace(Scanner inpot) throws Exception {
+    @Override
+    public void isEnoughSpace(Scanner inpot) throws Exception {
         System.out.println("The current number of clients is: " + clientList.size());
         if (clientList.size() >= 10){
             throwingToReplacing(inpot);
         }else {
-
+            addNew(inpot);
         }
     }
 
-    protected void throwingToReplacing(Scanner inpot) throws Exception {
+    @Override
+    public void throwingToReplacing(Scanner inpot) throws Exception {
         System.out.println("Sorry but we have reached the capacity of clients. Would you like to replace someone: ");
         System.out.println("Would you like to replace existing client?");
         String ans = inpot.nextLine();
@@ -41,7 +43,8 @@ public class AddingNewClient{
         }
     }
 
-    protected void addNewClient(Scanner inpot) throws Exception {
+    @Override
+    public void addNew(Scanner inpot) throws Exception {
             System.out.print("Please enter the name ID of the client here: ");
             String name = inpot.nextLine();
             if (clientList.contains(name)){

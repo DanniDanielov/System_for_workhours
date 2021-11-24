@@ -3,11 +3,8 @@ package com.company;
 import java.util.Scanner;
 
 
-public class Login {
-    //прави се проверка за какъв иска да е: админ или служител - да
-    //в main
-    //служител
-
+public class Login implements LoginInterface{
+    @Override
     public void adminLogin(String password, Scanner inpot) throws Exception {
         Admin admin = new Admin();
 
@@ -19,7 +16,8 @@ public class Login {
         }
     }
 
-    public void workerLogin(String nickname, String password, AddingNewClient client) throws Exception {
+    @Override
+    public void workerLogin(String nickname, String password) throws Exception {
         AddingNewWorker workerList = new AddingNewWorker();
         Worker worker = new Worker(nickname, password);
 

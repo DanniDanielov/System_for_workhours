@@ -4,10 +4,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-public class ReplacingExistingClient extends AddingNewClient{
-    AddingNewClient client = new AddingNewClient();
-
-    protected void replace(Scanner inpot){
+public class ReplacingExistingClient extends AddingNewClient implements ReplacingInterface{
+    public void replace(Scanner inpot){
         System.out.print("Please enter the name of the new worker: ");
         String name = inpot.nextLine();
         System.out.print("Please enter the name of the project: ");
