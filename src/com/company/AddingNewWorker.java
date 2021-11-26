@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 
-public class AddingNewWorker implements AddingInterface{
+public class AddingNewWorker extends ChoosingNextStepAfterDoneAdmin implements AddingInterface{
     List<Worker> workerList = new ArrayList<>(10);
     Admin admin = new Admin();
     ReplacingExistingWorker replacingExistingWorker = new ReplacingExistingWorker();
@@ -27,7 +27,6 @@ public class AddingNewWorker implements AddingInterface{
     @Override
     public void throwingToReplacing(Scanner inpot) throws Exception {
         System.out.println("Sorry but we reached our capacity of workers. Would you like to replace someone.");
-        //направи логика за замяна на елемент от листовете - да
         System.out.println("Do you want to replace someone of the workers?");
         String ans = inpot.nextLine();
         String ansLowerCase = ans.toLowerCase(Locale.ROOT);
@@ -35,8 +34,9 @@ public class AddingNewWorker implements AddingInterface{
         if (ansLowerCase.equals("yes")){
             replacingExistingWorker.replace(inpot);
         }else if(ansLowerCase.equals("no")){
-            //измисли на къде трябва да продължава оттук. Дали да свършва или да дава възможност между изход и началото
+            afterDone(inpot);
         }else {
+            throwingToReplacing(inpot);
             throw new Exception("Invalid input!");
         }
     }
@@ -46,8 +46,8 @@ public class AddingNewWorker implements AddingInterface{
             System.out.print("Please enter the name ID of the new worker here: ");
             String nickname = inpot.nextLine();
             if (workerList.contains(nickname)){
+                addNew(inpot);
                 throw new Exception("This user name is already taken! Please insert new nickname.");
-                //провери дали връща на същото място ил трябва да допълня!!!
             }else {
                 System.out.print("Choose an unique password for this user here: ");
                 String password = inpot.nextLine();

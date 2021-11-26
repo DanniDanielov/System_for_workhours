@@ -23,8 +23,8 @@ public class ReplacingExistingClient extends AddingNewClient implements Replacin
             System.out.println("This client " + name + " has client ID: " + clientList.indexOf(client));
             admin.menu(inpot);
         }catch (Exception e){
+            replace(inpot);
             new Exception("The date format is not correct!");
-            //провери къде те връща оттук!!!!
         }
     }
 }

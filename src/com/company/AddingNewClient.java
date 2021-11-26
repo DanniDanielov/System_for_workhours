@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class AddingNewClient implements AddingInterface{
+public class AddingNewClient extends ChoosingNextStepAfterDoneAdmin implements AddingInterface{
     List<Client> clientList = new ArrayList<>(10);
     Admin admin = new Admin();
     ReplacingExistingClient replacingExistingClient = new ReplacingExistingClient();
@@ -33,12 +33,14 @@ public class AddingNewClient implements AddingInterface{
         System.out.println("Would you like to replace existing client?");
         String ans = inpot.nextLine();
         String ansLowerCase = ans.toLowerCase(Locale.ROOT);
+        StartUpMenu start = new StartUpMenu();
 
         if (ansLowerCase.equals("yes")){
             replacingExistingClient.replace(inpot);
         }else if(ansLowerCase.equals("no")){
-            //измисли на къде трябва да продължава оттук. Дали да свършва или да дава възможност между изход и началото
+            afterDone(inpot);
         }else {
+            throwingToReplacing(inpot);
             throw new Exception("Invalid input!");
         }
     }
@@ -47,9 +49,10 @@ public class AddingNewClient implements AddingInterface{
     public void addNew(Scanner inpot) throws Exception {
             System.out.print("Please enter the name ID of the client here: ");
             String name = inpot.nextLine();
+
             if (clientList.contains(name)){
+                addNew(inpot);
                 throw new Exception("This client name is already taken! Please enter new name for this client!");
-                //провери дали връща на същото място ил трябва да допълня!!!
             }else{
                 System.out.print("Please enter the name of the project here: ");
                 String projectName = inpot.nextLine();
@@ -69,8 +72,8 @@ public class AddingNewClient implements AddingInterface{
                     file.flush();
                     admin.menu(inpot);
                 }catch (Exception e){
+                    addNew(inpot);
                     new Exception("The date format is not correct!");
-                    //провери къде те връща оттук!!!!
                 }
             }
         }

@@ -6,7 +6,7 @@ public class ReplacingExistingWorker extends AddingNewWorker implements Replacin
     AddingNewWorker worker = new AddingNewWorker();
 
     @Override
-    public void replace(Scanner inpot){
+    public void replace(Scanner inpot) throws Exception {
         System.out.print("Enter the name of the new worker: ");
         String name = inpot.nextLine();
         System.out.print("Enter a password for the new worker: ");
@@ -15,5 +15,6 @@ public class ReplacingExistingWorker extends AddingNewWorker implements Replacin
         byte id = inpot.nextByte();
             Worker newWorker = new Worker(name, password);
             worker.workerList.set(id, newWorker);
+            admin.menu(inpot);
     }
 }
