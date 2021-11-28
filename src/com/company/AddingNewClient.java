@@ -12,7 +12,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class AddingNewClient extends ChoosingNextStepAfterDoneAdmin implements AddingInterface{
+public class
+AddingNewClient extends ChoosingNextStepAfterDoneAdmin implements AddingInterface{
     List<Client> clientList = new ArrayList<>(10);
     Admin admin = new Admin();
     ReplacingExistingClient replacingExistingClient = new ReplacingExistingClient();
