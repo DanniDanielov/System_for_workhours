@@ -1,6 +1,7 @@
 package com.company;
 
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Worker extends AddingNewWorker {
@@ -21,12 +22,14 @@ public class Worker extends AddingNewWorker {
         String choice = inpot.nextLine();
         AddingNewClient addingNewClient = new AddingNewClient();
         for (Client client : addingNewClient.clientList) {
-            if (client.projectName.equals(choice)) {
+            if (client.projectName.equals(choice) && client.expiringDate.isAfter(LocalDate.now())) {
+
                 WorkDistribution distribution = new WorkDistribution();
                 distribution.clientDistribution(Integer.parseInt(inpot.next()));
             }
             else {
                 System.out.println("Don't have project with that name");
+
             }
 
         }
