@@ -68,7 +68,7 @@ AddingNewClient extends ChoosingNextStepAfterDoneAdmin implements AddingInterfac
                     System.out.println("This client " + name + " has client ID: " + clientList.indexOf(client));
                     Gson gson = new GsonBuilder().create();
                     JsonArray jsonArray = gson.toJsonTree(clientList).getAsJsonArray();
-                    FileWriter file = new FileWriter("GsonFile.json");
+                    FileWriter file = new FileWriter("ClientsFile.json");
                     file.write(String.valueOf(jsonArray));
                     file.flush();
                     admin.menu(inpot);

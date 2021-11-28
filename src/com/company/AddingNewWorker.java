@@ -57,7 +57,7 @@ public class AddingNewWorker extends ChoosingNextStepAfterDoneAdmin implements A
                     System.out.println("The work ID of " + nickname + " is: " + workerList.indexOf(worker));
                     Gson gson = new GsonBuilder().create();
                     JsonArray jsonArray = gson.toJsonTree(workerList).getAsJsonArray();
-                    FileWriter file = new FileWriter("GsonFile.json");
+                    FileWriter file = new FileWriter("WorkerFile.json");
                     file.write(String.valueOf(jsonArray));
                     file.flush();
                     admin.menu(inpot);
