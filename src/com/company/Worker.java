@@ -1,6 +1,7 @@
 package com.company;
 
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Locale;
 import java.util.Scanner;
@@ -14,7 +15,7 @@ public class Worker extends AddingNewWorker {
         this.password = password;
     }
 
-    public void menu (Scanner inpot) {
+    public void menu (Scanner inpot) throws IOException {
         // тука правиш малък диалог и питаш какво иска да се прави, т.е. дали иска да разпределя работата
         // или да провери протоколите
         // това са съответните класове
