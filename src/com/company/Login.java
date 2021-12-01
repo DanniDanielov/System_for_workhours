@@ -29,7 +29,7 @@ public class Login implements LoginInterface{
             if (workerList.workerList.contains(password)){
                 System.out.println("Access granted.");
                 System.out.println("The work ID number of: " + nickname + " is: " + workerList.workerList.indexOf(nickname));
-                worker.menu();
+                worker.menu(inpot);
             }else{
                 start.loginAsWorker(inpot);
                 throw new Exception("Access denied! Invalid password.");

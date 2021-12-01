@@ -8,14 +8,13 @@ import java.util.Scanner;
 public class Worker extends AddingNewWorker {
     protected String name;
     protected String password;
-    Scanner inpot = new Scanner(System.in);
 
     public Worker (String name, String password) {
         this.name = name;
         this.password = password;
     }
 
-    public void menu () {
+    public void menu (Scanner inpot) {
         // тука правиш малък диалог и питаш какво иска да се прави, т.е. дали иска да разпределя работата
         // или да провери протоколите
         // това са съответните класове
