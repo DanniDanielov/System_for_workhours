@@ -9,11 +9,11 @@ public class Login implements LoginInterface{
         Admin admin = new Admin();
         StartUpMenu start = new StartUpMenu();
 
-        if (password.equals("аdmin")){
+        if (password.equals("Admin")){
             System.out.println("Access granted!");
             admin.menu(inpot);
         }else{
-            start.loginAsAdmin(inpot);
+
             throw new Exception("Access denied! Invalid password.");
         }
     }
