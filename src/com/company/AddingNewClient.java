@@ -14,6 +14,8 @@ import java.util.Scanner;
 
 public class
 AddingNewClient extends ChoosingNextStepAfterDoneAdmin implements AddingInterface{
+    private String projectName;
+
     List<Client> clientList = new ArrayList<>(10);
     Admin admin = new Admin();
     ReplacingExistingClient replacingExistingClient = new ReplacingExistingClient();
@@ -46,6 +48,14 @@ AddingNewClient extends ChoosingNextStepAfterDoneAdmin implements AddingInterfac
         }
     }
 
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
     @Override
     public void addNew(Scanner inpot) throws Exception {
             System.out.print("Please enter the name ID of the client here: ");
@@ -57,6 +67,7 @@ AddingNewClient extends ChoosingNextStepAfterDoneAdmin implements AddingInterfac
             }else{
                 System.out.print("Please enter the name of the project here: ");
                 String projectName = inpot.nextLine();
+                setProjectName(projectName);
                 System.out.println("Please enter the ending date for this project: " + projectName + " in format 'dd/MM/yyyy'.");
                 String dateOfExpire = inpot.nextLine();
 
