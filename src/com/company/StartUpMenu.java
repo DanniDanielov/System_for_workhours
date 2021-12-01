@@ -4,6 +4,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class StartUpMenu extends ChoosingNextStepAfterDoneWorker{
+    private String workerNickname;
 
     public void startUp(Scanner inpot) throws Exception {
         System.out.println("Hello and welcome to our program for monitoring the work hours in your company.");
@@ -37,6 +38,14 @@ public class StartUpMenu extends ChoosingNextStepAfterDoneWorker{
         }
     }
 
+    public void setWorkerNickname (String workerNickname) {
+        this.workerNickname = workerNickname;
+    }
+
+    public String getWorkerNickname () {
+        return workerNickname;
+    }
+
     public void loginAsWorker(Scanner inpot) throws Exception {
         Login log = new Login();
 
@@ -45,6 +54,7 @@ public class StartUpMenu extends ChoosingNextStepAfterDoneWorker{
         try {
             System.out.print("Username: ");
             String nickname = inpot.nextLine();
+            setWorkerNickname(nickname);
             try {
                 System.out.print("Password: ");
                 String password = inpot.nextLine();

@@ -2,6 +2,7 @@ package com.company;
 
 
 import java.time.LocalDate;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Worker extends AddingNewWorker {
@@ -23,9 +24,12 @@ public class Worker extends AddingNewWorker {
         AddingNewClient addingNewClient = new AddingNewClient();
         for (Client client : addingNewClient.clientList) {
             if (client.projectName.equals(choice) && client.expiringDate.isAfter(LocalDate.now())) {
+             Login login= new Login();
 
                 WorkDistribution distribution = new WorkDistribution();
-                distribution.clientDistribution(Integer.parseInt(inpot.next()));
+                System.out.print("Write working hours: ");
+                int hours = inpot.nextInt();
+                distribution.clientDistribution(hours);
             }
             else {
                 System.out.println("Don't have project with that name");
